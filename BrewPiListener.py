@@ -1,6 +1,5 @@
 import ConfigParser
 import logging
-import os
 import RequestHandler
 import SocketServer
 import sys
@@ -14,7 +13,7 @@ class ThreadedUDPServer(SocketServer.ThreadingMixIn, SocketServer.UDPServer):
     pass
 
 
-class BrewListenerApp():
+class BrewPiListenerApp():
 
     logger = logging.getLogger("BrewListenerApp")
     ip_address = "192.168.2.255"
@@ -34,7 +33,7 @@ class BrewListenerApp():
 
         # prepare UDP server
         self.logger.info("Listen to {}:{}".format(self.ip_address, self.port))
-        server = ThreadedUDPServer((self.ip_address, self.port), RequestHandler.BrewListenerRequestHandler)
+        server = ThreadedUDPServer((self.ip_address, self.port), RequestHandler.BrewPiListenerRequestHandler)
 
         # start UDP server
         server_thread = threading.Thread(target=server.serve_forever)
@@ -64,7 +63,7 @@ def main(config_file):
 
     # start daemon
     logging.info("Starting up application")
-    app = BrewListenerApp(config.get("server", "ip-address"), config.getint("server", "port"),
+    app = BrewPiListenerApp(config.get("server", "ip-address"), config.getint("server", "port"),
                           config.get("server", "pid-file"), config.get("server", "out-log-file"),
                           config.get("server", "err-log-file"))
     daemon_runner = runner.DaemonRunner(app)

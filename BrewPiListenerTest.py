@@ -6,7 +6,7 @@ import sys
 
 
 config = ConfigParser.RawConfigParser()
-config.read("BrewListener.cfg")
+config.read("BrewPiListener.cfg")
 
 PORT = config.getint('server', 'port')
 data = "{" \
