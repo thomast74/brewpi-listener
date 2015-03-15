@@ -9,9 +9,9 @@ import sys
 POST_URL = ""
 
 
-class BrewListenerRequestHandler(SocketServer.BaseRequestHandler):
+class BrewPiListenerRequestHandler(SocketServer.BaseRequestHandler):
 
-    logger = logging.getLogger("BrewListenerRequestHandler")
+    logger = logging.getLogger("BrewPiListenerRequestHandler")
 
     # UDP request coming in
     def handle(self):
