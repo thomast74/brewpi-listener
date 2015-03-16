@@ -15,3 +15,25 @@ Setup
 -----
 
 Follow the instructions to setup BrewPi Listener to start retrieving status updates from the BrewPi Sparks.
+
+1. create folder /opt/brewpi if not already exists
+    > sudo mkdir /opt/brewpi
+
+2. Create folder /opt/brewpi/brewpi-listener
+    > sudo mkdir /opt/brewpi/brewpi-listener
+
+3. Change directory to this folder
+    > cd /opt/brewpi/brewpi-listener
+
+4. If you have not installed git yet, it is time to do so
+    > sudo apt-get install git-core
+
+5. Clone the git repository
+    > sudo git clone https://github.com/thomast74/brewpi-listener.git
+
+6. Run install script
+    > sudo ./install.sh
+
+Check log file for errors /var/log/brewpi/BrewPiListener.err.log
+
+The application is installed as a daemon and will automatically after booting up.
