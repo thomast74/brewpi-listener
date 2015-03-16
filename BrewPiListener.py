@@ -90,5 +90,6 @@ def main(config_file):
     daemon_runner.daemon_context.files_preserve = [logging.root.handlers[0].stream]
     daemon_runner.do_action()
 
+
 if __name__ == "__main__":
     main(sys.argv[2])
