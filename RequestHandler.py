@@ -1,4 +1,3 @@
-
 # Copyright 2015 BrewPi
 # This file is part of BrewPi.
 
