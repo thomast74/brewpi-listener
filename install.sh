@@ -37,7 +37,7 @@ fi
 #
 # install software requirements
 #
-apt-get install python-daemon -q
+apt-get install python-daemon -y
 
 #
 # copy files into correct folder
