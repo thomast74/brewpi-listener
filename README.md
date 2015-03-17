@@ -32,6 +32,7 @@ Follow the instructions to setup BrewPi Listener to start retrieving status upda
     > sudo git clone https://github.com/thomast74/brewpi-listener.git
 
 6. Run install script
+    > sudo chmod +x ./install.sh
     > sudo ./install.sh
 
 Check log file for errors /var/log/brewpi/BrewPiListener.err.log

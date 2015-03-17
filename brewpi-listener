@@ -15,11 +15,11 @@
 case "$1" in 
     start)
         echo "Starting brewpi-listener"
-        /usr/bin/python /home/brewpi/brewpi-listener/BrewPiListener.py start /etc/brewpi/BrewPiListener.cfg
+        /usr/bin/python /opt/brewpi/brewpi-listener/BrewPiListener.py start /etc/brewpi/BrewPiListener.cfg
         ;;
     stop)
         echo "Stopping brewpi-listener"
-        /usr/bin/python /home/brewpi/brewpi-listener/BrewPiListener.py stop /etc/brewpi/BrewPiListener.cfg
+        /usr/bin/python /opt/brewpi/brewpi-listener/BrewPiListener.py stop /etc/brewpi/BrewPiListener.cfg
         ;;
     *)
         echo "Usage: /etc/init.d/brewpi-listener start|stop"
