@@ -1,18 +1,18 @@
-# Copyright 2015 BrewPi
-# This file is part of BrewPi.
+# Copyright 2015 Oink Brew
+# This file is part of Oink Brew.
 
-# BrewPi is free software: you can redistribute it and/or modify
+# Oink Brew is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-# BrewPi is distributed in the hope that it will be useful,
+# Oink Brew is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
 # You should have received a copy of the GNU General Public License
-# along with BrewPi Listener.
+# along with Oink Brew Listener.
 # If not, see <http://www.gnu.org/licenses/gpl.html>.
 #
 # @author Thomas Trageser
@@ -29,9 +29,9 @@ import sys
 POST_URL = ""
 
 
-class BrewPiListenerRequestHandler(SocketServer.BaseRequestHandler):
+class OinkBrewListenerRequestHandler(SocketServer.BaseRequestHandler):
 
-    logger = logging.getLogger("BrewPiListenerRequestHandler")
+    logger = logging.getLogger("OinkBrewListenerRequestHandler")
 
     # UDP request coming in
     def handle(self):
@@ -61,7 +61,7 @@ class BrewPiListenerRequestHandler(SocketServer.BaseRequestHandler):
 
     def send_status_to_api_server(self, status):
         try:
-            # open connection and post json to http://localhost/breqpi/api/status
+            # open connection and post json to http://localhost/oinkbrew/api/status
             self.logger.debug("POST to Url {}".format(POST_URL))
 
             response = requests.post(POST_URL, data=json.dumps(status))
@@ -69,3 +69,4 @@ class BrewPiListenerRequestHandler(SocketServer.BaseRequestHandler):
         except:
             e = sys.exc_info()[0]
             self.logger.error(e)
+

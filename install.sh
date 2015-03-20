@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# Copyright 2015 BrewPi
-# This file is part of BrewPi.
+# Copyright 2015 Oink Brew
+# This file is part of Oink Brew.
 
-# BrewPi is free software: you can redistribute it and/or modify
+# Oink Brew is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-# BrewPi is distributed in the hope that it will be useful,
+# Oink Brew is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
 # You should have received a copy of the GNU General Public License
-# along with BrewPi Listener.
+# along with Oink Brew Listener.
 # If not, see <http://www.gnu.org/licenses/gpl.html>.
 #
 # @author Thomas Trageser
@@ -24,14 +24,15 @@
 #
 # create required folder of not already exists
 #
-if [ ! -d "/etc/brewpi" ]
+if [ ! -d "/etc/oinkbrew" ]
 then
-    mkdir /etc/brewpi
+    mkdir /etc/oinkbrew
 fi
 
-if [ ! -d "/var/log/brewpi" ]
+if [ ! -d "/var/log/oinkbrew" ]
 then
-    mkdir /var/log/brewpi
+    mkdir /var/log/oinkbrew
+    chmod +w /var/log/oinkbrew
 fi
 
 #
@@ -42,16 +43,17 @@ apt-get install python-daemon -y
 #
 # copy files into correct folder
 #
-cp BrewPiListener.cfg /etc/brewpi/BrewPiListener.cfg
-cp brewpi-listener /etc/init.d/brewpi-listener
+cp oinkbrew-listener.cfg /etc/oinkbrew/oinkbrew-listener.cfg
+cp oinkbrew-listener /etc/init.d/oinkbrew-listener
 
 #
 # configure to run for log levels
 #
-chmod +x /etc/init.d/brewpi-listener
-update-rc.d brewpi-listener defaults
+chmod +x /etc/init.d/oinkbrew-listener
+update-rc.d oinkbrew-listener defaults
 
 #
 # start daemon
 #
-service brewpi-listener start
+service oinkbrew-listener start
+
