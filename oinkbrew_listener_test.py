@@ -19,10 +19,8 @@
 
 
 import ConfigParser
-import ipaddr
 import select
 import socket
-import sys
 
 
 def main():
@@ -30,22 +28,17 @@ def main():
     config.read("oinkbrew_listener.cfg")
 
     PORT = config.getint('server', 'port')
-    data = "{" \
-           "  \"version\": \"0.1\", " \
-           "  \"revision\": \"C\", " \
-           "  \"device-id\": \"xx-xx-xx-xx-xx\", " \
-           "  \"ip-address\": \"0.1\", " \
-           "  \"status\": \"ACTIVE\" " \
-           "}"
+    data = '{"device_config": "xx-xx-xx-xx-xx", "device_mode": "ACTIVE", "firmware_version": 0.1, "ip_address": "192.168.2.55", "board_revision": "REV_C", "device_id": "abcdefgh"}'
+
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
     print "\nSending data to 0.0.0.0.255"
-    sock.sendto(data + "\n", ("0.0.0.0", PORT))
+    sock.sendto(data, ("0.0.0.0", PORT))
 
-    print "Sent:     {}".format(data)
+    print "Sent: {}".format(data)
     ready = select.select([sock], [], [], 1)
     if ready[0]:
         data = sock.recv(512)
