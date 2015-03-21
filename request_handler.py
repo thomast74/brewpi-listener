@@ -59,12 +59,12 @@ class OinkBrewListenerRequestHandler(SocketServer.BaseRequestHandler):
         except ValueError:
             return False
 
-    def send_status_to_api_server(self, status):
+    def send_status_to_api_server(self, json_string):
         try:
             # open connection and post json to http://localhost/oinkbrew/api/status
             self.logger.debug("POST to Url {}".format(POST_URL))
 
-            response = requests.post(POST_URL, data=json.dumps(status))
+            response = requests.post(POST_URL, data=json_string)
             self.logger.debug("RESPONSE: {} {}".format(response.status_code, response.text))
         except:
             e = sys.exc_info()[0]

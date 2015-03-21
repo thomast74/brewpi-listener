@@ -32,7 +32,7 @@ fi
 if [ ! -d "/var/log/oinkbrew" ]
 then
     mkdir /var/log/oinkbrew
-    chmod +w /var/log/oinkbrew
+    chmod a+w /var/log/oinkbrew
 fi
 
 #
