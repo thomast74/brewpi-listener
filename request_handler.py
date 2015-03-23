@@ -63,6 +63,7 @@ class OinkBrewListenerRequestHandler(SocketServer.BaseRequestHandler):
         try:
             # open connection and post json to http://localhost/oinkbrew/api/status
             self.logger.debug("POST to Url {}".format(POST_URL))
+            self.logger.debug("Status Message: {}".format(json_string))
 
             response = requests.post(POST_URL, data=json_string)
             self.logger.debug("RESPONSE: {} {}".format(response.status_code, response.text))
