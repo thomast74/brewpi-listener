@@ -28,7 +28,7 @@ def main():
     config.read("oinkbrew_listener.cfg")
 
     PORT = config.getint('server', 'port')
-    data = '{"device_config": "0.0", "device_mode": "MANUAL", "firmware_version": "0.1", "ip_address": "192.168.2.58", "board_revision": "REV_C", "device_id": "53ff6a066678505535601367"}'
+    data = '{"device_config": "0.0", "device_mode": "MANUAL", "firmware_version": "0.1", "ip_address": "192.168.2.58", "web_address": "", "board_revision": "REV_C", "device_id": "53ff6a066678505535601367"}'
 
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
