@@ -46,7 +46,7 @@ class OinkBrewListenerRequestHandler(SocketServer.BaseRequestHandler):
                 socket.sendto("OK", self.client_address)
                 self.send_status_to_api_server(json_string)
             else:
-                self.logger.error("Received Invalid Json Status")
+                self.logger.error("Received Invalid Json Status: " + json_string)
                 socket.sendto("ERROR", self.client_address)
         except:
             e = sys.exc_info()[0]
@@ -54,7 +54,7 @@ class OinkBrewListenerRequestHandler(SocketServer.BaseRequestHandler):
 
     def validate_json(self, json_string):
         try:
-            jsonData = json.loads(json_string)
+            status_message = json.loads(json_string)
             return True
         except ValueError:
             return False
