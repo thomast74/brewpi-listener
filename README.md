@@ -31,12 +31,12 @@ Follow the instructions to setup Oink Brew Listener to start retrieving status u
     > sudo apt-get install git-core
 
 5. Clone the git repository
-    > sudo git clone https://github.com/thomast74/oinkbrew-listener.git
+    > sudo git clone https://github.com/thomast74/oinkbrew_listener.git
 
 6. Run install script
     > sudo chmod +x ./install.sh
     > sudo ./install.sh
 
-Check log file for errors /var/log/oinkbrew/oinkbrew_listener.err.log
+Check log file for errors /var/log/oinkbrew/oinkbrew-listener.err.log
 
 The application is installed as a daemon and will automatically start after booting up.
