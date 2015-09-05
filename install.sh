@@ -43,17 +43,18 @@ apt-get install python-daemon -y
 #
 # copy files into correct folder
 #
-cp oinkbrew-listener.cfg /etc/oinkbrew/oinkbrew-listener.cfg
-cp oinkbrew-listener /etc/init.d/oinkbrew-listener
+cp oinkbrew_listener.cfg /etc/oinkbrew/oinkbrew_listener.cfg
+cp oinkbrew_listener /etc/init.d/oinkbrew_listener
 
 #
 # configure to run for log levels
 #
-chmod +x /etc/init.d/oinkbrew-listener
-update-rc.d oinkbrew-listener defaults
+chmod +x /etc/init.d/oinkbrew_listener
+update-rc.d oinkbrew_listener defaults
+update-rc.d oinkbrew_listener enable
 
 #
 # start daemon
 #
-service oinkbrew-listener start
+/etc/init.d/oinkbrew_listener start
 

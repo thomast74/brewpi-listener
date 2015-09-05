@@ -35,11 +35,11 @@
 case "$1" in 
     start)
         echo "Starting oinkbrew_listener"
-        /usr/bin/python /opt/oinkbrew/oinkbrew-listener/oinkbrew_listener.py start /etc/oinkbrew/oinkbrew_listener.cfg
+        /usr/bin/python /opt/oinkbrew/oinkbrew_listener/oinkbrew_listener.py start /etc/oinkbrew/oinkbrew_listener.cfg
         ;;
     stop)
         echo "Stopping oinkbrew_listener"
-        /usr/bin/python /opt/oinkbrew/oinkbrew-listener/oinkbrew_listener.py stop /etc/oinkbrew/oinkbrew_listener.cfg
+        /usr/bin/python /opt/oinkbrew/oinkbrew_listener/oinkbrew_listener.py stop /etc/oinkbrew/oinkbrew_listener.cfg
         ;;
     *)
         echo "Usage: /etc/init.d/oinkbrew_listener start|stop"
