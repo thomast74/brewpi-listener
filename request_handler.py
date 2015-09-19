@@ -41,10 +41,12 @@ class OinkBrewListenerRequestHandler(SocketServer.BaseRequestHandler):
 
             self.logger.info("Handle message from {}".format(self.client_address[0]))
 
-            if self.validate_json(json_string):
+            json_valid, device_id = self.validate_json(json_string)
+
+            if json_valid:
                 self.logger.debug("Received Status from {}".format(self.client_address[0]))
                 socket.sendto("OK", self.client_address)
-                self.send_status_to_api_server(json_string)
+                self.send_status_to_api_server(device_id, json_string)
             else:
                 self.logger.error("Received Invalid Json Status: " + json_string)
                 socket.sendto("ERROR", self.client_address)
@@ -55,19 +57,19 @@ class OinkBrewListenerRequestHandler(SocketServer.BaseRequestHandler):
     def validate_json(self, json_string):
         try:
             status_message = json.loads(json_string)
-            return True
+            return True, status_message.get("device_id")
         except ValueError:
-            return False
+            return False, ""
 
-    def send_status_to_api_server(self, json_string):
+    def send_status_to_api_server(self, device_id, json_string):
         try:
             # open connection and post json to http://localhost/oinkbrew/api/status
-            self.logger.debug("POST to Url {}".format(POST_URL))
+            uri = POST_URL.format(device_id)
+            self.logger.debug("POST to Url {}".format(uri))
             self.logger.debug("Status Message: {}".format(json_string))
 
-            response = requests.post(POST_URL, data=json_string)
+            response = requests.put(uri, data=json_string)
             self.logger.debug("RESPONSE: {} {}".format(response.status_code, response.text))
         except:
             e = sys.exc_info()[0]
             self.logger.error(e)
-
