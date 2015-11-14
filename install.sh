@@ -38,7 +38,7 @@ fi
 #
 # install software requirements
 #
-apt-get install python-daemon -y
+apt-get install python-daemon python-requests -y
 
 #
 # copy files into correct folder
@@ -57,4 +57,3 @@ update-rc.d oinkbrew_listener enable
 # start daemon
 #
 /etc/init.d/oinkbrew_listener start
-
