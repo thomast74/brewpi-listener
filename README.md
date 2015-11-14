@@ -21,19 +21,16 @@ Follow the instructions to setup Oink Brew Listener to start retrieving status u
 1. create folder /opt/oinkbrew if not already exists
     > sudo mkdir /opt/oinkbrew
 
-2. Create folder /opt/oinkbrew/oinkbrew_listener
-    > sudo mkdir /opt/oinkbrew/oinkbrew_listener
+2. Change directory to this folder
+    > cd /opt/oinkbrew/
 
-3. Change directory to this folder
-    > cd /opt/oinkbrew/oinkbrew_listener
-
-4. If you have not installed git yet, it is time to do so
+3. If you have not installed git yet, it is time to do so
     > sudo apt-get install git-core
 
-5. Clone the git repository
+4. Clone the git repository
     > sudo git clone https://github.com/thomast74/oinkbrew_listener.git
 
-6. Run install script
+5. Run install script
     > sudo chmod +x ./install.sh
     > sudo ./install.sh
 
