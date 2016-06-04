@@ -24,7 +24,7 @@ import request_handler
 import SocketServer
 import sys
 import threading
-
+import time
 
 from daemon import runner
 from request_handler import OinkBrewListenerRequestHandler
@@ -58,11 +58,12 @@ class OinkBrewListenerApp():
         # start UDP server
         server_thread = threading.Thread(target=server.serve_forever)
         server_thread.daemon = True
+	server_thread.start()
 
         while True:
-            if not server_thread.is_alive():
-                server_thread.start()
+            time.sleep(10)
 
+	self.logger.info("Stop main thread...")
 
 def main(config_file):
     config = ConfigParser.RawConfigParser()
